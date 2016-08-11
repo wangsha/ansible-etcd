@@ -4,8 +4,8 @@ etcd_config_only: False
 etcd_daemon: "systemctl"
 
 # Download Variables
-etcd_version: v2.3.3
-etcd_checksum: cfd19ac19972528f28f83443175601f732e0b04d5b58a4074cbb4f5a7cf32031.
+etcd_version: v3.0.3
+etcd_checksum: c7e6c69108e6a64c71f152ff205a84d0a8b7524a034c8d744f2b660302b2186c8.
 etcd_platform: linux
 etcd_arch: amd64
 etcd_release: "etcd-{{ etcd_version }}-{{ etcd_platform }}-{{ etcd_arch }}"
@@ -33,10 +33,10 @@ etcd_peer_url_scheme: "{{ etcd_url_scheme }}"
 etcd_initial_cluster_state: new
 etcd_initial_cluster_token: etcd-cluster-1
 
-etcd_initial_advertise_peer_urls: "{{ etcd_peer_url_scheme }}://{{ hostvars[inventory_hostname]['ansible_' + etcd_peer_interface]['ipv4']['address'] }}:{{ etcd_peer_port }}"
-etcd_listen_peer_urls:  "{{ etcd_peer_url_scheme }}://{{ hostvars[inventory_hostname]['ansible_' + etcd_peer_interface]['ipv4']['address'] }}:{{ etcd_peer_port }}"
-etcd_advertise_client_urls: "{{ etcd_client_url_scheme }}://{{ hostvars[inventory_hostname]['ansible_' + etcd_client_interface]['ipv4']['address'] }}:{{ etcd_client_port }}"
-etcd_listen_client_urls: "{{ etcd_client_url_scheme }}://{{ hostvars[inventory_hostname]['ansible_' + etcd_client_interface]['ipv4']['address'] }}:{{ etcd_client_port }}"
+etcd_initial_advertise_peer_urls: "{{ etcd_peer_url_scheme }}://{{ hostvars[inventory_hostname].ip }}:{{ etcd_peer_port }}"
+etcd_listen_peer_urls:  "{{ etcd_peer_url_scheme }}://{{ hostvars[inventory_hostname].ip }}:{{ etcd_peer_port }}"
+etcd_advertise_client_urls: "{{ etcd_client_url_scheme }}://{{ hostvars[inventory_hostname].ip }}:{{ etcd_client_port }}"
+etcd_listen_client_urls: "{{ etcd_client_url_scheme }}://{{ hostvars[inventory_hostname].ip }}:{{ etcd_client_port }},{{ etcd_client_url_scheme }}://127.0.0.1:{{ etcd_client_port }}"
 
 etcd_client_cert_file: ~
 etcd_client_key_file: ~
