@@ -1,13 +1,13 @@
 etcd
 ====
 
-A role which installs and manages a clustered etcd.
+A role which installs and manages a clustered etcd. Forked from [retr0h/ansible-etcd](https://github.com/retr0h/ansible-etcd)
 
 Role ready status
 -----------------
 
-[![Build Status](http://img.shields.io/travis/retr0h/ansible-etcd.svg?style=flat-square)](https://travis-ci.org/retr0h/ansible-etcd)
-[![Galaxy](http://img.shields.io/badge/galaxy-ansible--etcd-blue.svg?style=flat-square)](https://galaxy.ansible.com/list#/roles/1206)
+[![Build Status](http://img.shields.io/travis/retr0h/ansible-etcd.svg?style=flat-square)](https://travis-ci.org/wangsha/ansible-etcd)
+
 
 Requirements
 ------------
