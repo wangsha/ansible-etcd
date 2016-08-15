@@ -6,8 +6,9 @@
   when: not etcd_config_only|bool
 
 - name: Install system dependencies for synchronize
+  become: true
   package: name={{ item }}
-  with_flattened: "{{ etcd_install_dependencies|default([]) }}"
+  with_flattened: "{{ etcd_install_dependencies }}"
   when: not etcd_config_only|bool
 
 - name: Download etcd
@@ -45,3 +46,18 @@
   when: ansible_service_mgr == "systemd"
   notify:
     - Restart etcd
+
+- name: Ensure etcd is running
+  service: name=etcd
+           state=started
+           enabled=yes
+
+- name: Pause
+  pause: seconds=10
+
+- name: Gather etcd cluster is health status
+  command: "{{ etcdctl_cmd }} cluster-health"
+  register: etcd_cluster_health
+  failed_when: "'cluster is healthy' not in etcd_cluster_health.stdout_lines"
+
+- debug: msg={{ etcd_cluster_health }}

@@ -17,6 +17,7 @@ etcd_download_filename: "{{ etcd_release }}.tar.gz"
 etcd_dir: /usr/local/sbin
 etcd_data_dir: /var/cache/etcd/state
 etcd_cmd: "{{ etcd_dir }}/etcd"
+etcdctl_cmd: "{{ etcd_dir }}/etcdctl"
 etcd_user: root # The user only applies to EL distros
 
 # Networking Variables
