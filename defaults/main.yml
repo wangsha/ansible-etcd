@@ -5,7 +5,7 @@ etcd_daemon: "systemctl"
 
 # Download Variables
 etcd_version: v3.0.4
-etcd_checksum: c7e6c69108e6a64c71f152ff205a84d0a8b7524a034c8d744f2b660302b2186c8.
+etcd_checksum: 788f9f74e605cf33be21f2f3a7c96e6691efd5e09a081d18dc222a78d080b917
 etcd_platform: linux
 etcd_arch: amd64
 etcd_release: "etcd-{{ etcd_version }}-{{ etcd_platform }}-{{ etcd_arch }}"
