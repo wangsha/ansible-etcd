@@ -2,7 +2,13 @@
 molecule:
   raw_env_vars:
     ANSIBLE_LIBRARY: ../library
-
+  test:
+    sequence:
+      - destroy
+      - create
+      - converge
+      - verify
+      - destroy
   ignore_paths:
     - .git
     - .vagrant
